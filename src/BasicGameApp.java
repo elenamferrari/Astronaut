@@ -90,8 +90,9 @@ public class BasicGameApp implements Runnable {
 
          moveThings();  //move all the game objects
          render();  // paint the graphics
-         pause(20); // sleep for 10 ms
-
+         pause(5); // sleep for 10 ms
+			wrap();
+			bounce();
 		}
 	}
 
@@ -102,6 +103,14 @@ public class BasicGameApp implements Runnable {
 		astro.move();
 		astrotwo.move();
 
+	}
+
+	public void wrap() {
+		astro.wrap();
+	}
+
+	public void bounce() {
+		astrotwo.bounce();
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
