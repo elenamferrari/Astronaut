@@ -39,11 +39,14 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+	public Image background;
+	public Image catPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
 	private Astronaut astrotwo;
+	private Astronaut cat;
 
 
    // Main method definition
@@ -65,11 +68,17 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+		catPic = Toolkit.getDefaultToolkit().getImage("cat.png");
+		background = Toolkit.getDefaultToolkit().getImage("starry sky.jpg");
+		background = Toolkit.getDefaultToolkit().getImage("starry sky.jpg");
 		astro = new Astronaut(10,100,2,0);
+		cat = new Astronaut(10,80,2,0);
 
 		astrotwo = new Astronaut(10, 50,0,5);
 		astrotwo.dx = 0;
 		astrotwo.dy = 5;
+		cat.dy=3;
+		cat.dx=4;
 
 
 
@@ -102,6 +111,7 @@ public class BasicGameApp implements Runnable {
       //calls the move( ) code in the objects
 		astro.move();
 		astrotwo.move();
+		cat.move();
 
 	}
 
@@ -111,6 +121,7 @@ public class BasicGameApp implements Runnable {
 
 	public void bounce() {
 		astrotwo.bounce();
+		cat.bounce();
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
@@ -160,8 +171,12 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 
       //draw the image of the astronaut
+		g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
 		g.drawImage(astroPic, astrotwo.xpos, astrotwo.ypos, astrotwo.width, astrotwo.height, null);
+		g.drawImage(catPic, cat.xpos, cat.ypos, cat.width, cat.height, null);
+		g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
+		g.draw(new Rectangle(astrotwo.xpos, astrotwo.ypos, astrotwo.width, astrotwo.height));
 
 		g.dispose();
 
