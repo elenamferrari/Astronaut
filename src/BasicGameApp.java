@@ -29,8 +29,8 @@ public class BasicGameApp implements Runnable {
    //You can set their initial values too
    
    //Sets the width and height of the program window
-	final int WIDTH = 1000;
-	final int HEIGHT = 700;
+	final int WIDTH = 2000;
+	final int HEIGHT = 1700;
 
    //Declare the variables needed for the graphics
 	public JFrame frame;
@@ -71,15 +71,17 @@ public class BasicGameApp implements Runnable {
 		catPic = Toolkit.getDefaultToolkit().getImage("cat.png");
 		background = Toolkit.getDefaultToolkit().getImage("starry sky.jpg");
 		background = Toolkit.getDefaultToolkit().getImage("starry sky.jpg");
-		astro = new Astronaut(10,100,2,2);
-		cat = new Astronaut(50,200,2,0);
 
-		astrotwo = new Astronaut(10, 50,0,5);
+		astro = new Astronaut(300,100,20,8);
+		cat = new Astronaut(50,250,4,0);
+		astrotwo = new Astronaut(100, 50,0,10);
+
 		astrotwo.dx = 0;
-		astrotwo.dy = 5;
-		astro.dy=1;
-		cat.dy=3;
-		cat.dx=4;
+		astrotwo.dy = 15;
+		astro.dy=4;
+		astro.dx=12;
+		cat.dy=12;
+		cat.dx=16;
 
 
 
@@ -193,8 +195,15 @@ public class BasicGameApp implements Runnable {
 		if(astro.rec.intersects(cat.rec)) {
 			cat.dy=-cat.dy;
 			cat.dx=-cat.dx;
-			astro.dy=-cat.dy;
-			astro.dx=-cat.dx;
+			astro.dy=-astro.dy;
+			astro.dx=-astro.dx;
+		}
+		if(astro.rec.intersects(astrotwo.rec)) {
+			astrotwo.xpos=10;
+			astrotwo.ypos=10;
+			astrotwo.dx=5;
+			astrotwo.height=3/4*astrotwo.height;
 		}
 	}
+
 }

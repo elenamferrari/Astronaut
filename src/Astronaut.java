@@ -31,8 +31,8 @@ public class Astronaut {
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 60;
-        height = 60;
+        width = 120;
+        height = 120;
         isAlive = true;
         rec = new Rectangle (xpos, ypos, height, width);
  
@@ -47,7 +47,7 @@ public class Astronaut {
     }
 
     public void wrap() {
-        if (xpos >=1000) {
+        if (xpos >=2000) {
             xpos=0;
         }
         rec = new Rectangle (xpos, ypos, height, width);
@@ -55,16 +55,16 @@ public class Astronaut {
     }
 
     public void bounce() {
-        if (ypos>=660) {
+        if (ypos>=1600) {
             dy=-dy;
         }
-        if (ypos<=0) {
+        if (ypos<=10) {
             dy=-dy;
         }
-        if (xpos>=1000) {
+        if (xpos>=1900) {
             dx=-dx;
         }
-        if (xpos<=0) {
+        if (xpos<=10) {
             dx=-dx;
         }
         rec = new Rectangle (xpos, ypos, height, width);
