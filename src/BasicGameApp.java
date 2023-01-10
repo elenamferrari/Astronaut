@@ -71,12 +71,13 @@ public class BasicGameApp implements Runnable {
 		catPic = Toolkit.getDefaultToolkit().getImage("cat.png");
 		background = Toolkit.getDefaultToolkit().getImage("starry sky.jpg");
 		background = Toolkit.getDefaultToolkit().getImage("starry sky.jpg");
-		astro = new Astronaut(10,100,2,0);
-		cat = new Astronaut(10,80,2,0);
+		astro = new Astronaut(10,100,2,2);
+		cat = new Astronaut(50,200,2,0);
 
 		astrotwo = new Astronaut(10, 50,0,5);
 		astrotwo.dx = 0;
 		astrotwo.dy = 5;
+		astro.dy=1;
 		cat.dy=3;
 		cat.dx=4;
 
@@ -112,16 +113,18 @@ public class BasicGameApp implements Runnable {
 		astro.move();
 		astrotwo.move();
 		cat.move();
+		crash();
 
 	}
 
 	public void wrap() {
-		astro.wrap();
+		//astro.wrap();
 	}
 
 	public void bounce() {
 		astrotwo.bounce();
 		cat.bounce();
+		astro.bounce();
 	}
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
@@ -181,5 +184,17 @@ public class BasicGameApp implements Runnable {
 		g.dispose();
 
 		bufferStrategy.show();
+	}
+
+	public void crash() {
+		if(astro.rec.intersects(cat.rec)) {
+			System.out.println("crash");
+		}
+		if(astro.rec.intersects(cat.rec)) {
+			cat.dy=-cat.dy;
+			cat.dx=-cat.dx;
+			astro.dy=-cat.dy;
+			astro.dx=-cat.dx;
+		}
 	}
 }
