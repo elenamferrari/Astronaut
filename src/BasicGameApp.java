@@ -199,10 +199,13 @@ public class BasicGameApp implements Runnable {
 			astro.dx=-astro.dx;
 		}
 		if(astro.rec.intersects(astrotwo.rec)) {
-			astrotwo.xpos=10;
-			astrotwo.ypos=10;
-			astrotwo.dx=5;
-			astrotwo.height=3/4*astrotwo.height;
+//			astrotwo.xpos=10;
+//			astrotwo.ypos=10;
+//			astrotwo.dx=5;
+//			astrotwo.height=3/4*astrotwo.height;
+			astrotwo.isAlive=false;
+			astrotwo.width=0;
+			astrotwo.height=0;
 		}
 	}
 
