@@ -178,7 +178,9 @@ public class BasicGameApp implements Runnable {
       //draw the image of the astronaut
 		g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
 		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-		g.drawImage(astroPic, astrotwo.xpos, astrotwo.ypos, astrotwo.width, astrotwo.height, null);
+		if(astrotwo.isAlive==true) {
+			g.drawImage(astroPic, astrotwo.xpos, astrotwo.ypos, astrotwo.width, astrotwo.height, null);
+		}
 		g.drawImage(catPic, cat.xpos, cat.ypos, cat.width, cat.height, null);
 		g.draw(new Rectangle(astro.xpos, astro.ypos, astro.width, astro.height));
 		g.draw(new Rectangle(astrotwo.xpos, astrotwo.ypos, astrotwo.width, astrotwo.height));
@@ -198,15 +200,14 @@ public class BasicGameApp implements Runnable {
 			astro.dy=-astro.dy;
 			astro.dx=-astro.dx;
 		}
-		if(astro.rec.intersects(astrotwo.rec)) {
+		if(astro.rec.intersects(astrotwo.rec) && astro.isAlive==true && astrotwo.isAlive==true) {
 //			astrotwo.xpos=10;
 //			astrotwo.ypos=10;
 //			astrotwo.dx=5;
 //			astrotwo.height=3/4*astrotwo.height;
 			astrotwo.isAlive=false;
-			astrotwo.width=0;
-			astrotwo.height=0;
 		}
+
 	}
 
 }
